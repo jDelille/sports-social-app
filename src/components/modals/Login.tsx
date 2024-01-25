@@ -5,6 +5,9 @@ import Modal from './Modal';
 import useLoginModal from '../../hooks/useLoginModal';
 import useRegisterModal from '../../hooks/useRegisterModal';
 import { AuthString } from '../../app-string/AuthString';
+import Button from '../button/Button';
+import { FcGoogle } from "react-icons/fc";
+
 
 export interface ILoginProps { };
 
@@ -41,9 +44,13 @@ const Login: React.FC<ILoginProps> = (props) => {
             <input type="email" />
             <input type="password" />
 
-            <button onClick={() => signInWithGoogle()} disabled={authing}>
-                {AuthString.SignUpWithGoogle.value}
-            </button>
+            <Button
+                label={AuthString.SignInWithGoogle.value}
+                isDisabled={authing}
+                ariaLabel={AuthString.GoogleButtonAriaLabel.value}
+                onClick={() => signInWithGoogle()}
+                icon={FcGoogle}
+            />
 
             <p>{AuthString.DontHaveAnAccount.value}
                 <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span>

@@ -1,12 +1,11 @@
 import React, { ReactNode } from 'react';
 import Navbar from './Navbar';
-import LeftSidebar from './LeftSidebar';
-import RightSidebar from './RightSidebar';
-
-import '../styles/LayoutStyles.scss';
+import LeftSidebar from './sidebar/LeftSidebar';
+import RightSidebar from './sidebar/RightSidebar';
 import Login from './modals/Login';
 import Register from './modals/Register';
 
+import '../styles/LayoutStyles.scss';
 
 interface LayoutProps {
     children: ReactNode;
@@ -17,7 +16,6 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
     return (
         <div className='layout'>
             <Navbar />
-
 
             {/* Main content area */}
             <main>
@@ -31,8 +29,6 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
                 <RightSidebar />
             </main>
-
-            {/* <Footer /> */}
         </div>
     )
 }

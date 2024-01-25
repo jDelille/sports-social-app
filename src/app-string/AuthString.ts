@@ -13,13 +13,16 @@ export const AuthString = StringSheet.create({
     AlreadyHaveAnAccount: {
         en: "Already have an account?"
     },
-    SignUpWithGoogle: {
-        en: "Sign up with Google"
+    SignInWithGoogle: {
+        en: "Sign in with Google"
     },
     SignUp: {
         en: "Sign up"
     },
     Login: {
         en: "Log in"
+    },
+    GoogleButtonAriaLabel: {
+        en: "Sign in with Google"
     }
 } as NamedStrings<any>);
