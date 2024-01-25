@@ -1,0 +1,15 @@
+@use '../../styles/mixins' as *;
+
+.overlay {
+    @include overlay();
+}
+
+.show-modal,
+.hide-modal {
+    @include modal();
+}
+
+.hide-modal {
+    transform: translateY(300px);
+    opacity: 0;
+}

@@ -5,6 +5,7 @@ import LeftSidebar from './LeftSidebar';
 import RightSidebar from './RightSidebar';
 
 import '../styles/LayoutStyles.scss';
+import Login from './modals/Login';
 
 
 interface LayoutProps {
@@ -23,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
                 <LeftSidebar />
 
                 <div className='middle'>
+                    <Login />
                     {children}
                 </div>
 
