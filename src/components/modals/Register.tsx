@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from './Modal';
 import useRegisterModal from '../../hooks/useRegisterModal'
 import useLoginModal from '../../hooks/useLoginModal';
+import { AuthString } from '../../app-string/AuthString';
 
 const Register: React.FC = () => {
 
@@ -18,13 +19,13 @@ const Register: React.FC = () => {
             <input type="email" />
             <input type="password" />
 
-            <p>Already have an account? <span onClick={openLoginModal}>Sign in</span></p>
+            <p>{AuthString.AlreadyHaveAnAccount.value} <span onClick={openLoginModal}>{AuthString.SignUp.value}</span></p>
         </div>
     )
 
     return (
         <Modal
-            title='Create an account'
+            title={AuthString.RegisterHeaderTitle.value}
             body={bodyContent}
             isOpen={registerModal.isOpen}
             onClose={registerModal.onClose}

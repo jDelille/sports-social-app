@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from './Modal';
 import useLoginModal from '../../hooks/useLoginModal';
 import useRegisterModal from '../../hooks/useRegisterModal';
+import { AuthString } from '../../app-string/AuthString';
 
 export interface ILoginProps { };
 
@@ -40,15 +41,15 @@ const Login: React.FC<ILoginProps> = (props) => {
             <input type="email" />
             <input type="password" />
 
-            <button onClick={() => signInWithGoogle()} disabled={authing}> Sign in with google</button>
-            <p>Don't have an account? <span onClick={openRegisterModal}>Sign up</span></p>
+            <button onClick={() => signInWithGoogle()} disabled={authing}> {AuthString.SignUpWithGoogle.value}</button>
+            <p>{AuthString.DontHaveAnAccount.value} <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span></p>
 
         </div>
     )
 
     return (
         <Modal
-            title='Login'
+            title={AuthString.LoginHeaderTitle.value}
             body={bodyContent}
             isOpen={loginModal.isOpen}
             onClose={loginModal.onClose}
