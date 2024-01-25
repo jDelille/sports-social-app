@@ -3,10 +3,10 @@ import { IconBaseProps, IconType } from 'react-icons'
 import './ButtonStyles.scss';
 
 type ButtonProps = {
-    label: string;
+    label?: string;
     isDisabled?: boolean;
     icon?: IconType;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     ariaLabel: string;
     tabIndex?: number;
     iconProps?: IconBaseProps; // Optional props for the icon

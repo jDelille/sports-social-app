@@ -24,5 +24,17 @@ export const AuthString = StringSheet.create({
     },
     GoogleButtonAriaLabel: {
         en: "Sign in with Google"
+    },
+    Email: {
+        en: "Email"
+    },
+    EmailPlaceholder: {
+        en: "Email address"
+    },
+    Password: {
+        en: "Password"
+    },
+    PasswordPlaceholder: {
+        en: "••••••••"
     }
 } as NamedStrings<any>);

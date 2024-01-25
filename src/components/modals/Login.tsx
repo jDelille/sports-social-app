@@ -5,13 +5,13 @@ import Modal from './Modal';
 import useLoginModal from '../../hooks/useLoginModal';
 import useRegisterModal from '../../hooks/useRegisterModal';
 import { AuthString } from '../../app-string/AuthString';
-import Button from '../button/Button';
 import { FcGoogle } from "react-icons/fc";
+import Input from '../input/Input';
 
 
 export interface ILoginProps { };
 
-const Login: React.FC<ILoginProps> = (props) => {
+const Login: React.FC<ILoginProps> = () => {
     const auth = getAuth();
     const navigate = useNavigate();
     const [authing, setAuthing] = useState(false);
@@ -41,21 +41,37 @@ const Login: React.FC<ILoginProps> = (props) => {
 
     const bodyContent = (
         <div className="auth-body-content">
-            <input type="email" />
-            <input type="password" />
-
-            <Button
-                label={AuthString.SignInWithGoogle.value}
-                isDisabled={authing}
-                ariaLabel={AuthString.GoogleButtonAriaLabel.value}
-                onClick={() => signInWithGoogle()}
-                icon={FcGoogle}
+            <Input
+                id='email-input'
+                disabled={false}
+                type='email'
+                inputMode='email'
+                required
+                placeholder={AuthString.EmailPlaceholder.value}
+                onChange={(e) => console.log(e.target.value)}
+                label={AuthString.Email.value}
             />
 
-            <p>{AuthString.DontHaveAnAccount.value}
-                <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span>
-            </p>
+            <Input
+                id='password-input'
+                disabled={false}
+                type='password'
+                inputMode='text'
+                required
+                placeholder={AuthString.PasswordPlaceholder.value}
+                onChange={(e) => console.log(e.target.value)}
+                label={AuthString.Password.value}
+            />
+
+
         </div>
+    )
+
+    const footerContent = (
+        <p className='footer-content'>{AuthString.DontHaveAnAccount.value}
+            {" "}
+            <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span>
+        </p>
     )
 
     return (
@@ -64,6 +80,14 @@ const Login: React.FC<ILoginProps> = (props) => {
             body={bodyContent}
             isOpen={loginModal.isOpen}
             onClose={loginModal.onClose}
+            onSubmit={() => console.log('Login clicked')}
+            actionLabel={AuthString.Login.value}
+            ariaLabel1={AuthString.Login.value}
+            ariaLabel2={AuthString.GoogleButtonAriaLabel.value}
+            secondaryAction={() => signInWithGoogle()}
+            secondaryActionLabel={AuthString.SignInWithGoogle.value}
+            icon={FcGoogle}
+            footer={footerContent}
         />
     )
 }

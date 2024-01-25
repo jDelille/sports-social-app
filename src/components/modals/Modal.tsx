@@ -1,57 +1,84 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { MdClose } from "react-icons/md";
 import './ModalStyles.scss';
+import { IconType } from 'react-icons';
+import Button from '../button/Button';
 
 type Props = {
     isOpen?: boolean;
     onClose: () => void;
-    onSubmit?: () => void;
+    onSubmit: () => void;
     disabled?: boolean;
     body: React.ReactElement;
-    actionLabel?: string;
+    footer: React.ReactElement;
+    actionLabel: string;
     disableButton?: boolean;
     secondaryActionLabel?: string;
     secondaryAction?: () => void;
     title?: string;
+    ariaLabel1: string;
+    ariaLabel2?: string;
+    icon?: IconType
 }
 
 const Modal: React.FC<Props> = (props) => {
 
-    const [showModal, setShowModal] = useState(props.isOpen);
+    const { isOpen, onClose, onSubmit, secondaryAction, disabled, body, footer, actionLabel, ariaLabel1, ariaLabel2, title, icon: Icon, secondaryActionLabel } = props;
+
+    const [showModal, setShowModal] = useState(isOpen);
 
     useEffect(() => {
-        setShowModal(props.isOpen);
-    }, [props.isOpen])
+        setShowModal(isOpen);
+    }, [isOpen])
 
     const handleClose = useCallback(() => {
-        if (props.disabled) {
+        if (disabled) {
             return;
         }
 
         setShowModal(false);
 
         setTimeout(() => {
-            props.onClose();
+            onClose();
         }, 300)
 
-    }, [props.disabled, props.onClose])
+    }, [disabled, onClose])
 
-    if (!props.isOpen) {
+    if (!isOpen) {
         return null;
     }
+
+
 
     return (
         <div className='overlay'>
             <div className={showModal ? 'show-modal' : 'hide-modal'}>
                 <div className="modal-header">
-                    <strong>{props.title}</strong>
-                    <p onClick={handleClose}>close</p>
+                    <strong>{title}</strong>
+                    <MdClose onClick={handleClose} className='close-icon' size={18} color='gray' />
                 </div>
                 <div className="modal-body">
-                    {props.body}
+                    {body}
                 </div>
                 <div className="footer">
-                    <button onClick={props.onSubmit}>{props.actionLabel}</button>
-                    <button onClick={props.secondaryAction}>{props.secondaryActionLabel}</button>
+                    <Button
+                        label={actionLabel}
+                        isDisabled={disabled}
+                        ariaLabel={ariaLabel1}
+                        onClick={onSubmit}
+                    />
+                    {secondaryActionLabel && (
+                        <Button
+                            label={secondaryActionLabel}
+                            isDisabled={disabled}
+                            ariaLabel={ariaLabel2 as string}
+                            onClick={secondaryAction}
+                            icon={Icon}
+                        />
+                    )}
+
+
+                    {footer}
                 </div>
             </div>
         </div>

@@ -18,13 +18,14 @@
 @mixin modal {
     position: fixed;
     width: 30%;
-    max-width: 450px;
+    max-width: 550px;
     min-width: 450px;
     padding: 1rem;
     border-radius: 12px;
-    background-color: $lightGray;
-    color: $white;
+    background-color: $white;
+    color: $black;
     transition: 300ms ease-in-out;
     opacity: 1;
     height: fit-content;
+
 }

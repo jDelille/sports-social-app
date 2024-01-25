@@ -1,0 +1,28 @@
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+    margin-top: 10px;
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        outline: none;
+        height: 45px;
+        border: 1px solid lightgray;
+        display: flex;
+        align-items: center;
+
+        &::placeholder {
+            color: gray;
+        }
+    }
+}
