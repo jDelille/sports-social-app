@@ -4,7 +4,7 @@ export const AuthString = StringSheet.create({
     LoginHeaderTitle: {
         en: "Login",
     },
-    RegisterHeaderTitle: {
+    CreateAnAccount: {
         en: "Create an account"
     },
     DontHaveAnAccount: {

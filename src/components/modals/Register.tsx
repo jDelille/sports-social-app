@@ -72,7 +72,7 @@ const Register: React.FC = () => {
 
     return (
         <Modal
-            title={AuthString.RegisterHeaderTitle.value}
+            title={AuthString.CreateAnAccount.value}
             body={bodyContent}
             isOpen={registerModal.isOpen}
             onClose={registerModal.onClose}

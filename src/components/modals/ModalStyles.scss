@@ -29,7 +29,7 @@
         flex-direction: column;
         gap: 20px;
 
-        button {
+        .modal-button {
             &:nth-of-type(odd) {
                 margin-top: 20px;
                 margin-bottom: 10px;

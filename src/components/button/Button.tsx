@@ -19,9 +19,10 @@ const Button: React.FC<ButtonProps> = (props) => {
         <button
             onClick={onClick}
             disabled={isDisabled}
-            className='button'
             aria-label={ariaLabel}
             tabIndex={tabIndex}
+            className='button'
+
         >
             {Icon && <Icon size={18} {...iconProps} className='button-icon' />}
             {label}
