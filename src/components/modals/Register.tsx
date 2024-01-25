@@ -19,7 +19,9 @@ const Register: React.FC = () => {
             <input type="email" />
             <input type="password" />
 
-            <p>{AuthString.AlreadyHaveAnAccount.value} <span onClick={openLoginModal}>{AuthString.SignUp.value}</span></p>
+            <p>{AuthString.AlreadyHaveAnAccount.value}
+                <span onClick={openLoginModal}>{AuthString.SignUp.value}</span>
+            </p>
         </div>
     )
 

@@ -41,9 +41,13 @@ const Login: React.FC<ILoginProps> = (props) => {
             <input type="email" />
             <input type="password" />
 
-            <button onClick={() => signInWithGoogle()} disabled={authing}> {AuthString.SignUpWithGoogle.value}</button>
-            <p>{AuthString.DontHaveAnAccount.value} <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span></p>
+            <button onClick={() => signInWithGoogle()} disabled={authing}>
+                {AuthString.SignUpWithGoogle.value}
+            </button>
 
+            <p>{AuthString.DontHaveAnAccount.value}
+                <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span>
+            </p>
         </div>
     )
 
