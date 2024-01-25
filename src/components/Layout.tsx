@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer';
 import LeftSidebar from './LeftSidebar';
 import RightSidebar from './RightSidebar';
 
 import '../styles/LayoutStyles.scss';
 import Login from './modals/Login';
+import Register from './modals/Register';
 
 
 interface LayoutProps {
@@ -25,6 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
                 <div className='middle'>
                     <Login />
+                    <Register />
                     {children}
                 </div>
 

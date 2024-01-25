@@ -3,6 +3,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
 import Modal from './Modal';
 import useLoginModal from '../../hooks/useLoginModal';
+import useRegisterModal from '../../hooks/useRegisterModal';
 
 export interface ILoginProps { };
 
@@ -13,6 +14,7 @@ const Login: React.FC<ILoginProps> = (props) => {
 
 
     const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
 
     const signInWithGoogle = async () => {
         setAuthing(true);
@@ -28,21 +30,25 @@ const Login: React.FC<ILoginProps> = (props) => {
             })
     }
 
+    const openRegisterModal = () => {
+        loginModal.onClose();
+        registerModal.onOpen();
+    }
+
     const bodyContent = (
         <div className="auth-body-content">
             <input type="email" />
             <input type="password" />
 
             <button onClick={() => signInWithGoogle()} disabled={authing}> Sign in with google</button>
+            <p>Don't have an account? <span onClick={openRegisterModal}>Sign up</span></p>
 
         </div>
     )
 
     return (
-        // <div>Login
-        //     <button onClick={() => signInWithGoogle()} disabled={authing}> Sign in with google</button>
-        // </div>
         <Modal
+            title='Login'
             body={bodyContent}
             isOpen={loginModal.isOpen}
             onClose={loginModal.onClose}
