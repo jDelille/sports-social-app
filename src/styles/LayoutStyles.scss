@@ -1,0 +1,44 @@
+.layout {
+    background-color: orange;
+    width: 1174px;
+    height: 100vh;
+    margin: 0 auto;
+
+    .navbar {
+        background-color: purple;
+    }
+
+
+
+    main {
+        background-color: dodgerblue;
+        display: flex;
+        // padding: 0 4rem;
+
+
+        .sidebar {
+            background-color: darkgreen;
+            width: 287px;
+            min-width: 287px;
+            max-width: 287px;
+            padding: 0 10px;
+            position: sticky;
+            top: 0;
+            max-height: 100vh;
+
+        }
+
+        .middle {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 200vh;
+            width: 600px;
+        }
+    }
+
+    .footer {
+        background-color: red;
+    }
+}
