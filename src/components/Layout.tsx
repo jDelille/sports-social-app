@@ -15,7 +15,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, title }) => {
     return (
         <div className='layout'>
-            {/* <Navbar /> */}
+            <Navbar />
 
 
             {/* Main content area */}
