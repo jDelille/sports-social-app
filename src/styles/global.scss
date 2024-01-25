@@ -1,10 +1,35 @@
+@use './breakpoints' as *;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-// body {
-//     width: 100vw;
-//     overflow-x: hidden;
-// }
+/**
+ Breakpoints
+ */
+
+.layout {
+    @include breakpoint(md) {
+        width: 100%;
+    }
+}
+
+.right-sidebar {
+    @include breakpoint(md) {
+        display: none;
+    }
+}
+
+.left-sidebar {
+    @include breakpoint(sm) {
+        display: none;
+    }
+}
+
+.middle {
+    @include breakpoint(md) {
+        flex: 1;
+    }
+}

@@ -8,15 +8,12 @@
         background-color: purple;
     }
 
-
-
     main {
         background-color: dodgerblue;
         display: flex;
-        // padding: 0 4rem;
 
-
-        .sidebar {
+        .right-sidebar,
+        .left-sidebar {
             background-color: darkgreen;
             width: 287px;
             min-width: 287px;
