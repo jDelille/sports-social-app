@@ -1,12 +1,13 @@
 import React from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import useLoginModal from '../hooks/useLoginModal';
+import firebaseApp from '../firebase/config'
 
 export interface IHomeProps { };
 
 const Home: React.FC<IHomeProps> = (props) => {
 
-    const auth = getAuth();
+    const auth = getAuth(firebaseApp);
     const loginModal = useLoginModal();
 
     return (

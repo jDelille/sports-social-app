@@ -67,7 +67,7 @@ const Modal: React.FC<Props> = (props) => {
                         ariaLabel={ariaLabel1}
                         onClick={onSubmit}
                     />
-                    {secondaryActionLabel && (
+                    {/* {secondaryActionLabel && (
                         <Button
                             label={secondaryActionLabel}
                             isDisabled={disabled}
@@ -75,7 +75,7 @@ const Modal: React.FC<Props> = (props) => {
                             onClick={secondaryAction}
                             icon={Icon}
                         />
-                    )}
+                    )} */}
 
 
                     {footer}
