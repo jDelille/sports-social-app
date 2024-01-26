@@ -1,5 +1,4 @@
 .layout {
-    background-color: orange;
     width: 1174px;
     height: 100vh;
     margin: 0 auto;
@@ -9,16 +8,14 @@
     }
 
     main {
-        background-color: dodgerblue;
         display: flex;
 
         .right-sidebar,
         .left-sidebar {
-            background-color: darkgreen;
             width: 287px;
             min-width: 287px;
             max-width: 287px;
-            padding: 0 10px;
+            padding: 0 1rem;
             position: sticky;
             top: 0;
             max-height: 100vh;
@@ -27,12 +24,13 @@
         }
 
         .middle {
-            background-color: aqua;
             display: flex;
             justify-content: center;
             align-content: center;
             height: 200vh;
             width: 600px;
+            border-right: 1px solid lightgray;
+            border-left: 1px solid lightgray;
         }
     }
 }

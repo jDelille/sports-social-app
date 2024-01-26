@@ -22,16 +22,12 @@ const Home: React.FC<IHomeProps> = () => {
         return () => unsubscribe();
     }, [auth]);
 
+    // <button onClick={() => signOut(auth)}>Sign out</button>
+
+
     return (
         <>
-            {/* Your Home page content goes here */}
             <h1>Welcome to the Home Page</h1>
-
-            {user ? (
-                <button onClick={() => signOut(auth)}>Sign out</button>
-            ) : (
-                <button onClick={loginModal.onOpen}>Sign in</button>
-            )}
         </>
     );
 };
