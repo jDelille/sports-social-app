@@ -22,6 +22,9 @@ export const AuthString = StringSheet.create({
     Login: {
         en: "Log in"
     },
+    Logout: {
+        en: "Logout"
+    },
     GoogleButtonAriaLabel: {
         en: "Sign in with Google"
     },

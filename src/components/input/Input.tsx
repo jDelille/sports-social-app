@@ -3,7 +3,7 @@ import './InputStyles.scss';
 
 type InputProps = {
     id: string;
-    label: string;
+    label?: string;
     disabled?: boolean;
     type?: string;
     required?: boolean;

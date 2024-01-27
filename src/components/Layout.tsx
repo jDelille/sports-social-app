@@ -7,14 +7,17 @@ import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseApp from '../firebase/config';
 
 import '../styles/LayoutStyles.scss';
+import PageHeader from './page-header/PageHeader';
+import { IconType } from 'react-icons';
 
 
 interface LayoutProps {
     children: ReactNode;
-    title?: string;
+    title: string;
+    icon: IconType
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
 
     const auth = getAuth(firebaseApp);
 
@@ -32,16 +35,19 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
     return (
         <div className='layout'>
-            {/* <Navbar /> */}
 
             {/* Main content area */}
             <main>
-                <LeftSidebar user={user} />
+                <LeftSidebar user={user} auth={auth} />
 
                 <div className='middle'>
+                    <PageHeader title={title} icon={icon} />
                     <Login />
                     <Register />
-                    {children}
+                    <div className='middle-children'>
+                        {children}
+                    </div>
+
                 </div>
 
                 <RightSidebar />

@@ -3,10 +3,6 @@
     height: 100vh;
     margin: 0 auto;
 
-    .navbar {
-        background-color: purple;
-    }
-
     main {
         display: flex;
 
@@ -19,18 +15,19 @@
             position: sticky;
             top: 0;
             max-height: 100vh;
-            padding-top: 1rem;
 
         }
 
         .middle {
             display: flex;
-            justify-content: center;
-            align-content: center;
-            height: 200vh;
             width: 600px;
-            border-right: 1px solid lightgray;
-            border-left: 1px solid lightgray;
+            flex-direction: column;
+
+            .middle-children {
+                border-right: 1px solid lightgray;
+                border-left: 1px solid lightgray;
+                min-height: calc(100vh - 45px - 0.6rem);
+            }
         }
     }
 }
