@@ -5,16 +5,18 @@ import useLoginModal from '../../hooks/useLoginModal';
 import { AuthString } from '../../app-string/AuthString';
 import Input from '../input/Input';
 import { UserCredential, createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import firebaseApp from '../../firebase/config';
+import { app, db } from '../../firebase/config';
+import { addDoc, collection } from 'firebase/firestore';
 
 const Register: React.FC = () => {
 
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
-    const auth = getAuth(firebaseApp);
+    const auth = getAuth(app);
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [displayName, setDisplayName] = useState('');
 
 
     const handleRegistration = async () => {
@@ -22,6 +24,18 @@ const Register: React.FC = () => {
 
             const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
+
+            const additionalUserData = {
+                email: email,
+                displayName: displayName
+            }
+
+            const usersCollection = collection(db, 'users');
+            await addDoc(usersCollection, {
+                uid: user.uid,
+                ...additionalUserData
+
+            })
 
             console.log("User registered successfully!", user)
             registerModal.onClose();
@@ -47,6 +61,17 @@ const Register: React.FC = () => {
                 placeholder={AuthString.EmailPlaceholder.value}
                 onChange={(e) => setEmail(e.target.value)}
                 label={AuthString.Email.value}
+            />
+
+            <Input
+                id='displayName-input'
+                disabled={false}
+                type='text'
+                inputMode='text'
+                required
+                placeholder={AuthString.DisplayNamePlaceholder.value}
+                onChange={(e) => setDisplayName(e.target.value)}
+                label={AuthString.DisplayName.value}
             />
 
             <Input

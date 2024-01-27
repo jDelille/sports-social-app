@@ -34,6 +34,12 @@ export const AuthString = StringSheet.create({
     EmailPlaceholder: {
         en: "Email address"
     },
+    DisplayName: {
+        en: "Username"
+    },
+    DisplayNamePlaceholder: {
+        en: "Choose a username"
+    },
     Password: {
         en: "Password"
     },
