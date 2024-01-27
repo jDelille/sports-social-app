@@ -42,5 +42,17 @@
             align-items: center;
             gap: 10px;
         }
+
+        .user-links {
+            border-top: 1px solid lightgray;
+            margin: 10px 0;
+            padding-top: 10px;
+
+            a {
+                cursor: pointer;
+            }
+        }
     }
+
+
 }

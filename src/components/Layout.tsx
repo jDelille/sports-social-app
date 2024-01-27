@@ -50,7 +50,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
 
                 </div>
 
-                <RightSidebar />
+                <RightSidebar user={user} auth={auth} />
             </main>
         </div>
     )
