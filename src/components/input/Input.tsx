@@ -7,7 +7,7 @@ type InputProps = {
     disabled?: boolean;
     type?: string;
     required?: boolean;
-    placeholder: string;
+    placeholder?: string;
     onChange?: (value: any) => void;
     inputMode: 'search' | 'text' | 'email' | 'tel' | 'url' | 'numeric' | 'decimal' | 'none';
 }

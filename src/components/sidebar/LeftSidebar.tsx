@@ -11,13 +11,15 @@ import UserBar from "../user-bar/UserBar";
 type LeftSidebarProps = {
     user: any;
     auth: any;
+    avatar: string;
 }
 
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth }) => {
+const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth, avatar }) => {
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
 
-    const noUser = user === null
+    const noUser = user && user.length === 0
+
 
     return (
         <div className='left-sidebar'>
@@ -26,8 +28,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth }) => {
                     <p>{AppInfoString.NotLoggedInMessage.value}</p>
                     <Button
                         onClick={registerModal.onOpen}
-                        label={AuthString.CreateAnAccount.value}
-                        ariaLabel={AuthString.CreateAnAccount.value}
+                        label={AuthString.CreateAccount.value}
+                        ariaLabel={AuthString.CreateAccount.value}
                     />
                     <Button
                         onClick={loginModal.onOpen}
@@ -36,15 +38,9 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth }) => {
                     />
                 </div>
             ) : (
-                // <Button
-                //     onClick={() => signOut(auth)}
-                //     label={AuthString.Logout.value}
-                //     ariaLabel={AuthString.Logout.value}
-                // />
                 <div>
                     <SearchBar />
-
-                    <UserBar user={user} />
+                    <UserBar user={user} avatar={avatar} />
                 </div>
             )}
 

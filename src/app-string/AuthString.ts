@@ -4,13 +4,13 @@ export const AuthString = StringSheet.create({
     LoginHeaderTitle: {
         en: "Login",
     },
-    CreateAnAccount: {
+    CreateAccount: {
         en: "Create an account"
     },
-    DontHaveAnAccount: {
+    DontHaveAccount: {
         en: "Don't have an account?"
     },
-    AlreadyHaveAnAccount: {
+    AlreadyHaveAccount: {
         en: "Already have an account?"
     },
     SignInWithGoogle: {
@@ -28,17 +28,14 @@ export const AuthString = StringSheet.create({
     GoogleButtonAriaLabel: {
         en: "Sign in with Google"
     },
+    Name: {
+        en: "Name"
+    },
     Email: {
         en: "Email"
     },
-    EmailPlaceholder: {
-        en: "Email address"
-    },
     DisplayName: {
         en: "Username"
-    },
-    DisplayNamePlaceholder: {
-        en: "Choose a username"
     },
     Password: {
         en: "Password"

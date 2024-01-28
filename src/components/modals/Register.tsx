@@ -16,13 +16,15 @@ const Register: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [displayName, setDisplayName] = useState('');
-
+    const [name, setName] = useState('');
+    const [photoURL, setPhotoURL] = useState('./assets/avatar-placeholder.png')
+    const [photo, setPhoto] = useState(null);
 
     const { signup } = auth;
 
     const handleRegistration = async () => {
         try {
-            await signup(email, password, displayName);
+            await signup(email, password, displayName, name, photo);
         } catch (error: any) {
             console.error("Error registering user: ", error.message)
         }
@@ -34,15 +36,32 @@ const Register: React.FC = () => {
     }
 
 
+    const handlePhotoChange = (e) => {
+        if (e.target.files[0]) {
+            setPhoto(e.target.files[0])
+        }
+    }
+
+
+
     const bodyContent = (
         <div className="auth-body-content">
+            <Input
+                id='name-input'
+                disabled={false}
+                type='text'
+                inputMode='text'
+                required
+                onChange={(e) => setName(e.target.value)}
+                label={AuthString.Name.value}
+            />
+
             <Input
                 id='email-input'
                 disabled={false}
                 type='email'
                 inputMode='email'
                 required
-                placeholder={AuthString.EmailPlaceholder.value}
                 onChange={(e) => setEmail(e.target.value)}
                 label={AuthString.Email.value}
             />
@@ -53,7 +72,6 @@ const Register: React.FC = () => {
                 type='text'
                 inputMode='text'
                 required
-                placeholder={AuthString.DisplayNamePlaceholder.value}
                 onChange={(e) => setDisplayName(e.target.value)}
                 label={AuthString.DisplayName.value}
             />
@@ -69,11 +87,14 @@ const Register: React.FC = () => {
                 label={AuthString.Password.value}
             />
 
+            <input type='file' onChange={handlePhotoChange} />
+            <img alt='avatar' className='avatar' src={photoURL} />
+
         </div>
     )
 
     const footerContent = (
-        <p className='footer-content'>{AuthString.AlreadyHaveAnAccount.value}
+        <p className='footer-content'>{AuthString.AlreadyHaveAccount.value}
             {" "}
             <span onClick={openLoginModal}>{AuthString.SignUp.value}</span>
         </p>
@@ -81,7 +102,7 @@ const Register: React.FC = () => {
 
     return (
         <Modal
-            title={AuthString.CreateAnAccount.value}
+            title={AuthString.CreateAccount.value}
             body={bodyContent}
             isOpen={registerModal.isOpen}
             onClose={registerModal.onClose}

@@ -30,11 +30,12 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
     }, [])
 
     console.log(user)
+    console.log(currentUser)
 
     return (
         <div className='layout'>
             <main>
-                <LeftSidebar user={user} auth={auth} />
+                <LeftSidebar user={user} auth={auth} avatar={currentUser.photoURL} />
 
                 <div className='middle'>
                     <PageHeader title={title} icon={icon} />

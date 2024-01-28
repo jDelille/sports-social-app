@@ -63,7 +63,6 @@ const Login: React.FC<ILoginProps> = () => {
                 type='email'
                 inputMode='email'
                 required
-                placeholder={AuthString.EmailPlaceholder.value}
                 onChange={(e) => setEmail(e.target.value)}
                 label={AuthString.Email.value}
             />
@@ -84,7 +83,7 @@ const Login: React.FC<ILoginProps> = () => {
     )
 
     const footerContent = (
-        <p className='footer-content'>{AuthString.DontHaveAnAccount.value}
+        <p className='footer-content'>{AuthString.DontHaveAccount.value}
             {" "}
             <span onClick={openRegisterModal}>{AuthString.SignUp.value}</span>
         </p>

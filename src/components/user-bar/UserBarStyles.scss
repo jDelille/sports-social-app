@@ -1,3 +1,19 @@
 .user-bar {
     margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .name {
+        display: flex;
+        flex-direction: column;
+
+        strong {
+            font-size: 14px;
+        }
+
+        span {
+            font-size: 12px;
+        }
+    }
 }

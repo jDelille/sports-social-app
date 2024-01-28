@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User, UserCredential, createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { app, db, usersCollection } from "../firebase/config";
+import { app, db, upload, usersCollection } from "../firebase/config";
 import useRegisterModal from "../hooks/useRegisterModal";
-import { addDoc, collection, doc, getDoc, getFirestore, onSnapshot } from "firebase/firestore";
-import firebase from "firebase/compat/app";
+import { addDoc, collection, onSnapshot } from "firebase/firestore";
+
 
 export const AuthContext = createContext<any>(null);
 
@@ -13,7 +13,6 @@ export function useAuth() {
 
 let userRef = collection(db, "users");
 const auth = getAuth(app);
-
 
 export const getCurrentUser = (setCurrentUser: any) => {
     onSnapshot(userRef, (response) => {
@@ -27,7 +26,6 @@ export const getCurrentUser = (setCurrentUser: any) => {
                 })
         )
     })
-
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -38,7 +36,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const registerModal = useRegisterModal();
 
-    async function signup(email: string, password: string, displayName: string) {
+    async function signup(email: string, password: string, displayName: string, name: string, photo: File) {
         try {
             const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -46,12 +44,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const additionalUserData = {
                 email: email,
                 displayName: displayName,
+                name: name,
             };
 
             await addDoc(usersCollection, {
                 uid: user.uid,
                 ...additionalUserData,
             });
+
+            if (photo) {
+                upload(photo, user)
+            }
+
 
             console.log('User registered successfully!', user);
             registerModal.onClose();
