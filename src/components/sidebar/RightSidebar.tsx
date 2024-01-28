@@ -29,7 +29,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user, auth }) => {
                 <Link to="/bookmarks" className='link'><FaBookmark size={16} />Bookmarks</Link>
                 <Link to="/favorites" className='link'><FaStar size={16} />Favorites</Link>
 
-                {!noUser && (
+                {noUser && (
                     <div className='user-links'>
                         <a className='link' onClick={() => signOut(auth)}><FiLogOut size={16} /> Logout</a>
                     </div>

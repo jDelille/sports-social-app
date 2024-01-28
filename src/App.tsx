@@ -10,33 +10,37 @@ import AuthRoute from "./components/AuthRoute";
 
 import { FaHashtag, FaBell, FaBookmark, FaStar, FaHome } from "react-icons/fa";
 import { TbSoccerField } from "react-icons/tb";
+import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/"
-          element={<Layout title="Home" icon={FaHome}> <Home /></Layout>}
-        />
-        <Route path="/explore"
-          element={<AuthRoute><Layout title="Explore" icon={FaHashtag}><Explore /></Layout></AuthRoute>}
-        />
-        <Route path="/sportsbook"
-          element={<AuthRoute><Layout title="Sportsbook" icon={TbSoccerField}><Sportsbook /></Layout></AuthRoute>}
-        />
-        <Route path="/notifications"
-          element={<AuthRoute><Layout title="Notifications" icon={FaBell}><Notifications /></Layout></AuthRoute>}
-        />
-        <Route path="/bookmarks"
-          element={<AuthRoute><Layout title="Bookmarks" icon={FaBookmark}><Bookmarks /></Layout></AuthRoute>}
-        />
-        <Route path="/favorites"
-          element={<AuthRoute><Layout title="Favorites" icon={FaStar}> <Favorites /></Layout></AuthRoute>}
-        />
+      <AuthProvider>
+        <Routes>
+          <Route path="/"
+            element={<Layout title="Home" icon={FaHome}> <Home /></Layout>}
+          />
+          <Route path="/explore"
+            element={<AuthRoute><Layout title="Explore" icon={FaHashtag}><Explore /></Layout></AuthRoute>}
+          />
+          <Route path="/sportsbook"
+            element={<AuthRoute><Layout title="Sportsbook" icon={TbSoccerField}><Sportsbook /></Layout></AuthRoute>}
+          />
+          <Route path="/notifications"
+            element={<AuthRoute><Layout title="Notifications" icon={FaBell}><Notifications /></Layout></AuthRoute>}
+          />
+          <Route path="/bookmarks"
+            element={<AuthRoute><Layout title="Bookmarks" icon={FaBookmark}><Bookmarks /></Layout></AuthRoute>}
+          />
+          <Route path="/favorites"
+            element={<AuthRoute><Layout title="Favorites" icon={FaStar}> <Favorites /></Layout></AuthRoute>}
+          />
 
-      </Routes>
+        </Routes>
+      </AuthProvider>
+
     </Router>
   )
 }

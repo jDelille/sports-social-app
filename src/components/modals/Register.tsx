@@ -1,44 +1,28 @@
 import React, { useState } from 'react'
 import Modal from './Modal';
+import Input from '../input/Input';
 import useRegisterModal from '../../hooks/useRegisterModal'
 import useLoginModal from '../../hooks/useLoginModal';
 import { AuthString } from '../../app-string/AuthString';
-import Input from '../input/Input';
-import { UserCredential, createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { app, db } from '../../firebase/config';
-import { addDoc, collection } from 'firebase/firestore';
+import { useAuth } from '../../context/AuthContext';
+
 
 const Register: React.FC = () => {
 
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
-    const auth = getAuth(app);
+    const auth = useAuth();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [displayName, setDisplayName] = useState('');
 
 
+    const { signup } = auth;
+
     const handleRegistration = async () => {
         try {
-
-            const userCredential: UserCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            const additionalUserData = {
-                email: email,
-                displayName: displayName
-            }
-
-            const usersCollection = collection(db, 'users');
-            await addDoc(usersCollection, {
-                uid: user.uid,
-                ...additionalUserData
-
-            })
-
-            console.log("User registered successfully!", user)
-            registerModal.onClose();
+            await signup(email, password, displayName);
         } catch (error: any) {
             console.error("Error registering user: ", error.message)
         }

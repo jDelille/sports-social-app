@@ -1,15 +1,15 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useMemo, useState } from 'react';
 import LeftSidebar from './sidebar/LeftSidebar';
 import RightSidebar from './sidebar/RightSidebar';
 import Login from './modals/Login';
 import Register from './modals/Register';
-import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
+import { User, getAuth, } from 'firebase/auth';
 import { app } from '../firebase/config';
-
-import '../styles/LayoutStyles.scss';
 import PageHeader from './page-header/PageHeader';
 import { IconType } from 'react-icons';
+import { getCurrentUser, useAuth } from '../context/AuthContext';
 
+import '../styles/LayoutStyles.scss';
 
 interface LayoutProps {
     children: ReactNode;
@@ -23,20 +23,16 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
 
     const [user, setUser] = useState<User | null>(null);
 
-    useEffect(() => {
-        // Subscribe to the authentication state changes
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-        });
+    const { currentUser } = useAuth();
 
-        // Unsubscribe when the component unmounts
-        return () => unsubscribe();
-    }, [auth]);
+    useMemo(() => {
+        getCurrentUser(setUser)
+    }, [])
+
+    console.log(user)
 
     return (
         <div className='layout'>
-
-            {/* Main content area */}
             <main>
                 <LeftSidebar user={user} auth={auth} />
 
@@ -47,7 +43,6 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
                     <div className='middle-children'>
                         {children}
                     </div>
-
                 </div>
 
                 <RightSidebar user={user} auth={auth} />

@@ -1,5 +1,6 @@
-import { initializeApp } from "firebase/app"
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, FirebaseApp } from "firebase/app"
+import { collection, getFirestore } from "firebase/firestore";
+
 
 export const config = {
     firebaseConfig: {
@@ -13,7 +14,11 @@ export const config = {
 }
 
 const app = initializeApp(config.firebaseConfig)
-
 const db = getFirestore(app);
 
-export { app, db };
+
+
+// collections
+const usersCollection = collection(db, 'users');
+
+export { app, db, usersCollection };

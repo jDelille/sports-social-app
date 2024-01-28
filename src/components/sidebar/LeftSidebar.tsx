@@ -6,9 +6,10 @@ import Button from "../button/Button";
 import { AuthString } from "../../app-string/AuthString";
 import './SidebarStyles.scss';
 import SearchBar from "../search-bar/SearchBar";
+import UserBar from "../user-bar/UserBar";
 
 type LeftSidebarProps = {
-    user: User | null;
+    user: any;
     auth: any;
 }
 
@@ -42,6 +43,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth }) => {
                 // />
                 <div>
                     <SearchBar />
+
+                    <UserBar user={user} />
                 </div>
             )}
 
