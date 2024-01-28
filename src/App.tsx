@@ -8,10 +8,11 @@ import Favorites from "./pages/Favorites";
 import Layout from "./components/Layout";
 import AuthRoute from "./components/AuthRoute";
 
-import { FaHashtag, FaBell, FaBookmark, FaStar, FaHome } from "react-icons/fa";
-import { TbSoccerField } from "react-icons/tb";
-import { AuthProvider } from './context/AuthContext';
+import { CiHashtag, CiBellOn, CiBookmark, CiStar } from "react-icons/ci";
+import { IoHomeOutline } from "react-icons/io5";
+import { GiSoccerField } from "react-icons/gi";
 
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
 
@@ -20,22 +21,22 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/"
-            element={<Layout title="Home" icon={FaHome}> <Home /></Layout>}
+            element={<Layout title="Home" icon={IoHomeOutline}> <Home /></Layout>}
           />
           <Route path="/explore"
-            element={<AuthRoute><Layout title="Explore" icon={FaHashtag}><Explore /></Layout></AuthRoute>}
+            element={<AuthRoute><Layout title="Explore" icon={CiHashtag}><Explore /></Layout></AuthRoute>}
           />
           <Route path="/sportsbook"
-            element={<AuthRoute><Layout title="Sportsbook" icon={TbSoccerField}><Sportsbook /></Layout></AuthRoute>}
+            element={<AuthRoute><Layout title="Sportsbook" icon={GiSoccerField}><Sportsbook /></Layout></AuthRoute>}
           />
           <Route path="/notifications"
-            element={<AuthRoute><Layout title="Notifications" icon={FaBell}><Notifications /></Layout></AuthRoute>}
+            element={<AuthRoute><Layout title="Notifications" icon={CiBellOn}><Notifications /></Layout></AuthRoute>}
           />
           <Route path="/bookmarks"
-            element={<AuthRoute><Layout title="Bookmarks" icon={FaBookmark}><Bookmarks /></Layout></AuthRoute>}
+            element={<AuthRoute><Layout title="Bookmarks" icon={CiBookmark}><Bookmarks /></Layout></AuthRoute>}
           />
           <Route path="/favorites"
-            element={<AuthRoute><Layout title="Favorites" icon={FaStar}> <Favorites /></Layout></AuthRoute>}
+            element={<AuthRoute><Layout title="Favorites" icon={CiStar}> <Favorites /></Layout></AuthRoute>}
           />
 
         </Routes>

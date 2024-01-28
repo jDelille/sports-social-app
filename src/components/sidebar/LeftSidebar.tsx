@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { GiSoccerField } from "react-icons/gi";
 import { CiHashtag, CiBellOn, CiBookmark, CiStar, CiLogout } from "react-icons/ci";
-
-import { FiLogOut } from "react-icons/fi";
 import { signOut } from 'firebase/auth';
 import UserBar from '../user-bar/UserBar';
 
@@ -11,14 +9,11 @@ type LeftSidebarProps = {
     user: any;
     auth: any;
     avatar: string;
-
 }
-
 
 const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth, avatar }) => {
 
     const noUser = user && user.length === 0
-
 
     return (
         <div className='left-sidebar'>
