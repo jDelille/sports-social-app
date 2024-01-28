@@ -1,19 +1,6 @@
 @use '../../styles/variables' as *;
 
-.user-auth-wrapper {
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 0.8rem;
-
-    p {
-        margin-bottom: 10px;
-    }
-}
-
-
-.left-sidebar {
+.right-sidebar {
     .site-name {
         border-bottom: 1px solid lightgray;
         font-size: 23px;
@@ -24,7 +11,32 @@
         margin-top: 0.6rem;
         padding-bottom: 0.2rem;
 
+        a {
+            color: $black;
+            text-decoration: none;
+        }
+
     }
+
+    .user-auth-wrapper {
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 0.8rem;
+
+        p {
+            margin-bottom: 10px;
+        }
+    }
+
+}
+
+
+
+
+.left-sidebar {
+
 
     a {
         text-decoration: none;
@@ -37,16 +49,26 @@
         margin-top: 1rem;
 
         .link {
-            padding: 10px 0;
+            padding: 10px 0px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+
+            .icon-wrapper {
+                background-color: #f2f4f7;
+                width: 30px;
+                height: 30px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         .user-links {
-            border-top: 1px solid lightgray;
-            margin: 10px 0;
-            padding-top: 10px;
+            position: relative;
 
             a {
                 cursor: pointer;

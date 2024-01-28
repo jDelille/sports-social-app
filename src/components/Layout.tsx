@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
     return (
         <div className='layout'>
             <main>
-                <LeftSidebar user={user} auth={auth} />
+                <LeftSidebar user={user} auth={auth} avatar={currentUser?.photoURL} />
 
                 <div className='middle'>
                     <PageHeader title={title} icon={icon} />
@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
                     </div>
                 </div>
 
-                <RightSidebar user={user} auth={auth} avatar={currentUser?.photoURL} />
+                <RightSidebar user={user} auth={auth} />
 
             </main>
         </div>

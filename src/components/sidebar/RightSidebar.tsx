@@ -3,17 +3,15 @@ import useLoginModal from "../../hooks/useLoginModal";
 import useRegisterModal from "../../hooks/useRegisterModal";
 import Button from "../button/Button";
 import { AuthString } from "../../app-string/AuthString";
-import SearchBar from "../search-bar/SearchBar";
-import UserBar from "../user-bar/UserBar";
+import { Link } from "react-router-dom";
 import './SidebarStyles.scss';
 
 type RightSidebarProps = {
     user: any;
     auth: any;
-    avatar: string;
 }
 
-const RightSidebar: React.FC<RightSidebarProps> = ({ user, avatar }) => {
+const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
 
@@ -22,7 +20,10 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user, avatar }) => {
 
     return (
         <div className='right-sidebar'>
-            {noUser ? (
+            <div className='site-name'>
+                <Link to="/">Wagerly</Link>
+            </div>
+            {noUser && (
                 <div className="user-auth-wrapper">
                     <p>{AppInfoString.NotLoggedInMessage.value}</p>
                     <Button
@@ -35,11 +36,6 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user, avatar }) => {
                         label={AuthString.Login.value}
                         ariaLabel={AuthString.Login.value}
                     />
-                </div>
-            ) : (
-                <div>
-                    <SearchBar />
-                    <UserBar user={user} avatar={avatar} />
                 </div>
             )}
 
