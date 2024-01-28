@@ -4,6 +4,7 @@ import { GiSoccerField } from "react-icons/gi";
 import { CiHashtag, CiBellOn, CiBookmark, CiStar, CiLogout } from "react-icons/ci";
 import { signOut } from 'firebase/auth';
 import UserBar from '../user-bar/UserBar';
+import { IoHomeOutline } from "react-icons/io5";
 
 type LeftSidebarProps = {
     user: any;
@@ -19,6 +20,12 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ user, auth, avatar }) => {
         <div className='left-sidebar'>
             <UserBar user={user} avatar={avatar} />
             <ul>
+                <Link to="/" className='link'>
+                    <div className='icon-wrapper'>
+                        < IoHomeOutline size={16} color='#3e434e' />
+                    </div>
+                    Home
+                </Link>
                 <Link to="/explore" className='link'>
                     <div className='icon-wrapper'>
                         <CiHashtag size={18} color='#3e434e' />

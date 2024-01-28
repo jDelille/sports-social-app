@@ -4,6 +4,8 @@ import useRegisterModal from "../../hooks/useRegisterModal";
 import Button from "../button/Button";
 import { AuthString } from "../../app-string/AuthString";
 import { Link } from "react-router-dom";
+import { PiNotePencilLight } from "react-icons/pi";
+
 import './SidebarStyles.scss';
 
 type RightSidebarProps = {
@@ -23,7 +25,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
             <div className='site-name'>
                 <Link to="/">Wagerly</Link>
             </div>
-            {noUser && (
+            {noUser ? (
                 <div className="user-auth-wrapper">
                     <p>{AppInfoString.NotLoggedInMessage.value}</p>
                     <Button
@@ -37,6 +39,13 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
                         ariaLabel={AuthString.Login.value}
                     />
                 </div>
+            ) : (
+                <Button
+                    onClick={() => console.log('post btn clicked')}
+                    label="Create a post"
+                    ariaLabel="Create a post"
+                    icon={PiNotePencilLight}
+                />
             )}
 
         </div>
