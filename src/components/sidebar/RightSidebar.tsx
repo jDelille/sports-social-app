@@ -1,43 +1,47 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FaHashtag, FaBell, FaBookmark, FaStar } from "react-icons/fa";
-import { TbSoccerField } from "react-icons/tb";
-import { FiLogOut } from "react-icons/fi";
-import { signOut } from 'firebase/auth';
+import { AppInfoString } from "../../app-string/AppInfoString"
+import useLoginModal from "../../hooks/useLoginModal";
+import useRegisterModal from "../../hooks/useRegisterModal";
+import Button from "../button/Button";
+import { AuthString } from "../../app-string/AuthString";
+import SearchBar from "../search-bar/SearchBar";
+import UserBar from "../user-bar/UserBar";
+import './SidebarStyles.scss';
 
 type RightSidebarProps = {
     user: any;
     auth: any;
+    avatar: string;
 }
 
-
-const RightSidebar: React.FC<RightSidebarProps> = ({ user, auth }) => {
+const RightSidebar: React.FC<RightSidebarProps> = ({ user, avatar }) => {
+    const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
 
     const noUser = user && user.length === 0
 
 
     return (
         <div className='right-sidebar'>
-            <div className='site-name'>
-                <Link to="/">Wagerly</Link>
-            </div>
-
-            <ul>
-                <Link to="/explore" className='link'><FaHashtag size={16} /> Explore</Link>
-                <Link to="/sportsbook" className='link'><TbSoccerField size={16} />Sportsbook</Link>
-                <Link to="/notifications" className='link'><FaBell size={16} />Notifications</Link>
-                <Link to="/bookmarks" className='link'><FaBookmark size={16} />Bookmarks</Link>
-                <Link to="/favorites" className='link'><FaStar size={16} />Favorites</Link>
-
-                {!noUser && (
-                    <div className='user-links'>
-                        <a className='link' onClick={() => signOut(auth)}><FiLogOut size={16} /> Logout</a>
-                    </div>
-                )}
-
-            </ul>
-
-
+            {noUser ? (
+                <div className="user-auth-wrapper">
+                    <p>{AppInfoString.NotLoggedInMessage.value}</p>
+                    <Button
+                        onClick={registerModal.onOpen}
+                        label={AuthString.CreateAccount.value}
+                        ariaLabel={AuthString.CreateAccount.value}
+                    />
+                    <Button
+                        onClick={loginModal.onOpen}
+                        label={AuthString.Login.value}
+                        ariaLabel={AuthString.Login.value}
+                    />
+                </div>
+            ) : (
+                <div>
+                    <SearchBar />
+                    <UserBar user={user} avatar={avatar} />
+                </div>
+            )}
 
         </div>
     )

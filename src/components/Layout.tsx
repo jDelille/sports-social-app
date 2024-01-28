@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
-import LeftSidebar from './sidebar/LeftSidebar';
 import RightSidebar from './sidebar/RightSidebar';
+import LeftSidebar from './sidebar/LeftSidebar';
 import Login from './modals/Login';
 import Register from './modals/Register';
 import { User, getAuth, } from 'firebase/auth';
@@ -29,13 +29,10 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
         getCurrentUser(setUser)
     }, [])
 
-    console.log(user)
-    console.log(currentUser)
-
     return (
         <div className='layout'>
             <main>
-                <LeftSidebar user={user} auth={auth} avatar={currentUser.photoURL} />
+                <LeftSidebar user={user} auth={auth} />
 
                 <div className='middle'>
                     <PageHeader title={title} icon={icon} />
@@ -46,7 +43,8 @@ const Layout: React.FC<LayoutProps> = ({ children, title, icon }) => {
                     </div>
                 </div>
 
-                <RightSidebar user={user} auth={auth} />
+                <RightSidebar user={user} auth={auth} avatar={currentUser?.photoURL} />
+
             </main>
         </div>
     )

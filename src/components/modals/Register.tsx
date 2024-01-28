@@ -36,7 +36,7 @@ const Register: React.FC = () => {
     }
 
 
-    const handlePhotoChange = (e) => {
+    const handlePhotoChange = (e: any) => {
         if (e.target.files[0]) {
             setPhoto(e.target.files[0])
         }
